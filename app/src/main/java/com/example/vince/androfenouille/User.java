@@ -6,7 +6,7 @@ import java.util.ArrayList;
  */
 
 public class User {
-    private static ArrayList<> userList = new ArrayList<>();
+    private static ArrayList<User> userList = new ArrayList<User>();
     private static String vJeton;
     private int idEtu;
     private String nom;
@@ -70,6 +70,6 @@ public class User {
         this.annee = annee;
     }
     public void setUserList(ArrayList<User> userList){
-        userList = userList;
+        this.userList = userList;
     }
 }
