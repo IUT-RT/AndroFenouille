@@ -1,4 +1,10 @@
 package com.example.vince.androfenouille;
+import android.util.JsonReader;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 /**
@@ -13,6 +19,28 @@ public class User {
     private String firstName;
     private String formation;
     private int year;
+
+    public User(String text){
+        try {
+            JSONArray jsonArray = new JSONArray(text);
+            for (int i=0; i< jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                this.id = jsonObject.getInt("idEtu");
+                this.name = jsonObject.getString("nom");
+                this.firstName = jsonObject.getString("prenom");
+                this.formation = jsonObject.getString("formation");
+                this.year = jsonObject.getInt("annee");
+
+                System.out.println(id);
+                System.out.println(name);
+                System.out.println(firstName);
+                System.out.println(formation);
+                System.out.println(year);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
     public User(int id, String name, String firstName, String formation, int year){
         this.id = id;
@@ -118,4 +146,6 @@ public class User {
     public void setUserList(ArrayList<User> userList){
         this.userList = userList;
     }
+
+
 }
