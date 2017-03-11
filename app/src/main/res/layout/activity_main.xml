@@ -54,7 +54,7 @@
         android:layout_marginEnd="17dp"
         android:layout_marginRight="17dp"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/passEdit"
@@ -65,7 +65,7 @@
         android:layout_alignLeft="@+id/logEdit"
         android:layout_alignStart="@+id/logEdit"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="text" />
 
     <Button
         android:id="@+id/loginButton"

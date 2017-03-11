@@ -10,6 +10,8 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
     private EditText log;
     private EditText pass;
+    Download fille = new Download();
+    String json;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,18 +23,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Appelé pas le button
-    public void newActivity(View v){
+    public void newActivity(View v) {
         //Test si EditText non null
-        if(log.length() != 0 && pass.length() != 0) {
-            Account account = new Account(log.getText().toString(), pass.getText().toString(), "jeton");
+        if (log.getText().toString().equals("admin") && pass.getText().toString().equals("secret")) {
+          new Thread(new Runnable() {
+
+                public void run() {
+                    json =fille.DownloadJson("http://infort.gautero.fr/connect.php?login=admin&mdp=secret");
+                }
+            }).start();
+            Account account = new Account(log.getText().toString(), pass.getText().toString(), );
             Intent intent = new Intent(this, ListActivity.class);
             //On supprime ce qui est ecrit dans les EditTexts
             log.setText("");
             pass.setText("");
-            // Démarrage de la nouvelle activité
+            //Démarrage de la nouvelle activité
             startActivity(intent);
         }
     }
-
-
 }
