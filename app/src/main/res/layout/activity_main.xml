@@ -11,7 +11,73 @@
     tools:context="com.example.vince.androfenouille.MainActivity">
 
     <TextView
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Ultimate login for AndroFenouile"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:visibility="visible"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/loginText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="89dp"
+        android:text="Login :"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:id="@+id/passText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/loginText"
+        android:layout_marginTop="42dp"
+        android:text="Passwd :"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <EditText
+        android:id="@+id/logEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/loginText"
+        android:layout_alignBottom="@+id/loginText"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/passEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/passText"
+        android:layout_alignBottom="@+id/passText"
+        android:layout_alignLeft="@+id/logEdit"
+        android:layout_alignStart="@+id/logEdit"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/passText"
+        android:layout_marginTop="86dp"
+        android:text="Login"
+        android:onClick="newActivity"/>
+
 </RelativeLayout>

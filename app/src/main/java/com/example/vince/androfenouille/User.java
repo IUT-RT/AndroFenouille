@@ -12,6 +12,8 @@ import java.util.ArrayList;
  */
 
 public class User {
+    private static final int INT=0;
+    private static final String STR="x";
     private static ArrayList<User> userList = new ArrayList<User>();
     private static String vJeton;
     private int id;
@@ -20,6 +22,14 @@ public class User {
     private String formation;
     private int year;
 
+    public User(){
+        this.id=INT;
+        this.name=STR;
+        this.firstName=STR;
+        this.formation=STR;
+        this.year=INT;
+    }
+/*
     public User(String text){
         try {
             JSONArray jsonArray = new JSONArray(text);
@@ -30,17 +40,10 @@ public class User {
                 this.firstName = jsonObject.getString("prenom");
                 this.formation = jsonObject.getString("formation");
                 this.year = jsonObject.getInt("annee");
-
-                System.out.println(id);
-                System.out.println(name);
-                System.out.println(firstName);
-                System.out.println(formation);
-                System.out.println(year);
+                userList.add(this);
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
+        } catch (JSONException e) {}
+    }*/
 
     public User(int id, String name, String firstName, String formation, int year){
         this.id = id;
