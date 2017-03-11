@@ -10,4 +10,12 @@ Un projet android de fou !!!!
 * Creation de la class utilisateur
 * Ajout/sup des utilisateurs
 
+```
+#!/bin/bash
+for i in {5556..5791}
+do 
+wget 'infort.gautero.fr/supp.php?jeton=71a4a17a658b90a7f847585721b5a217&id'=$i
+done
+```
+
 
