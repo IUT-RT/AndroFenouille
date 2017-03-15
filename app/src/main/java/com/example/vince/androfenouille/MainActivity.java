@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
           new Thread(new Runnable() {
 
                 public void run() {
-                    json =fille.DownloadJson("http://infort.gautero.fr/connect.php?login=admin&mdp=secret");
+                    json =fille.DownloadJson("http://infort.gautero.fr/connect.php?login=" + log.getText().toString() + "&mdp=" + pass.getText().toString());
                 }
             }).start();
-            Account account = new Account(log.getText().toString(), pass.getText().toString(), );
+            Account account = new Account(log.getText().toString(), pass.getText().toString(), token);
             Intent intent = new Intent(this, ListActivity.class);
             //On supprime ce qui est ecrit dans les EditTexts
             log.setText("");

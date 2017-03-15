@@ -29,21 +29,21 @@ public class User {
         this.formation=STR;
         this.year=INT;
     }
-/*
-    public User(String text){
+
+    public void addUser(String text){
         try {
             JSONArray jsonArray = new JSONArray(text);
             for (int i=0; i< jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                this.id = jsonObject.getInt("idEtu");
-                this.name = jsonObject.getString("nom");
-                this.firstName = jsonObject.getString("prenom");
-                this.formation = jsonObject.getString("formation");
-                this.year = jsonObject.getInt("annee");
-                userList.add(this);
+                int id = jsonObject.getInt("idEtu");
+                String name = jsonObject.getString("nom");
+                String firstName = jsonObject.getString("prenom");
+                String formation = jsonObject.getString("formation");
+                int year = jsonObject.getInt("annee");
+                userList.add(new User(id, name, firstName, formation, year));
             }
         } catch (JSONException e) {}
-    }*/
+    }
 
     public User(int id, String name, String firstName, String formation, int year){
         this.id = id;
