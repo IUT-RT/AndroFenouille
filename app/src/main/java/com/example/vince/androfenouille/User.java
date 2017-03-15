@@ -76,7 +76,7 @@ public class User {
     }
 
     public String toString(){
-        return Integer.toString(id) + "|" + name + "|" + firstName + "|" + formation + "|" + Integer.toString(year);
+        return Integer.toString(id) + "-" + name + "-" + firstName + "-" + formation + "-" + Integer.toString(year);
     }
 
     public ArrayList<User> getUsersById(String id){

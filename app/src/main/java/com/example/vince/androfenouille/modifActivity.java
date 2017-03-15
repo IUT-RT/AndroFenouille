@@ -20,11 +20,11 @@ public class modifActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String value = intent.getStringExtra("param");
-        String[] parts = value.split("|");
+        String[] parts = value.split("-");
 
         idText.setText(parts[1]);
-        nomText.setText(parts[3]);
-        prenomtext.setText(parts[5]);
+        nomText.setText(parts[2]);
+        prenomtext.setText(parts[3]);
 
     }
 }
