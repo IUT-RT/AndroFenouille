@@ -14,7 +14,9 @@ import java.util.ArrayList;
 public class User {
     private static final int INT=0;
     private static final String STR="x";
-    private static ArrayList<User> userList = new ArrayList<User>();
+
+    static ArrayList<User> userList = new ArrayList<User>();
+
     private static String vJeton;
     private int id;
     private String name;
@@ -30,17 +32,12 @@ public class User {
         this.year=INT;
     }
 
-    public void addUser(String text){
+    public static void addUser(String text){
         try {
             JSONArray jsonArray = new JSONArray(text);
-            for (int i=0; i< jsonArray.length(); i++){
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                int id = jsonObject.getInt("idEtu");
-                String name = jsonObject.getString("nom");
-                String firstName = jsonObject.getString("prenom");
-                String formation = jsonObject.getString("formation");
-                int year = jsonObject.getInt("annee");
-                userList.add(new User(id, name, firstName, formation, year));
+            for (int i=0 ; i<jsonArray.length() ; i++){
+                JSONObject j = jsonArray.getJSONObject(i);
+                userList.add(new User(j.getInt("idEtu"), j.getString("nom"), j.getString("prenom"), j.getString("formation"), j.getInt("annee")));
             }
         } catch (JSONException e) {}
     }
@@ -51,7 +48,6 @@ public class User {
         this.firstName = firstName;
         this.formation = formation;
         this.year = year;
-        userList.add(this);
     }
 
     //Lecture
