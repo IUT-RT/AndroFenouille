@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
-                android:id="@+id/editText17"
+                android:id="@+id/id"
                 android:layout_weight="1" />
 
         </LinearLayout>
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/editText23"
+                android:id="@+id/nom"
                 android:layout_weight="1" />
         </LinearLayout>
 
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/editText24"
+                android:id="@+id/prenom"
                 android:layout_weight="1" />
         </LinearLayout>
 
@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/editText25"
+                android:id="@+id/formation"
                 android:layout_weight="0.22" />
         </LinearLayout>
 
@@ -142,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/editText26"
+                android:id="@+id/annee"
                 android:layout_weight="1" />
 
         </LinearLayout>
@@ -162,6 +162,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/button3"
+                android:onClick="ajoutUser"
                 android:layout_weight="1" />
         </LinearLayout>
 
