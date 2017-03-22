@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
                     json =fille.DownloadJson("http://infort.gautero.fr/connect.php?login=" + log.getText().toString() + "&mdp=" + pass.getText().toString());
                 }
             }).start();
-            Account account = new Account(log.getText().toString(), pass.getText().toString(), "71a4a17a658b90a7f847585721b5a217");
             Intent intent = new Intent(this, ListActivity.class);
             //On supprime ce qui est ecrit dans les EditTexts
             log.setText("");

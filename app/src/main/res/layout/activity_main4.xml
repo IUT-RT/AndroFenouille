@@ -113,10 +113,9 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:text="TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView9"
+                android:id="@+id/forText"
                 android:layout_weight="1"
                 android:textSize="18sp"
                 android:textAlignment="viewEnd" />
@@ -142,10 +141,9 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:text="TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView10"
+                android:id="@+id/anText"
                 android:layout_weight="1"
                 android:textSize="18sp"
                 android:textAlignment="viewEnd" />
@@ -164,15 +162,10 @@
 
             <Button
                 android:text="SUPPRIMER"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/button5" />
 
-            <Button
-                android:text="MODIFIER"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/button3" />
         </LinearLayout>
 
     </LinearLayout>

@@ -14,7 +14,6 @@ public class Account {
         passwd=pass;
         jeton=vJeton;
     }
-/*
     //Lecture
     public String getUser(){
         return user;
@@ -22,8 +21,6 @@ public class Account {
     public String getPasswd(){
         return passwd;
     }
-    public String getJeton(){
-        return jeton;
-    }*/
+    public String getJeton(){ return jeton; }
 
 }

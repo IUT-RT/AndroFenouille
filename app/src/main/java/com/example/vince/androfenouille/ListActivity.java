@@ -57,18 +57,24 @@ public class ListActivity extends AppCompatActivity {
 
 
             myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                String[] user;
+
                 @Override
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-
                     Object o = myList.getItemAtPosition(position);
                     String var = o.toString();
-
+                    user = var.split("-");
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            fille.DownloadJson("http://infort.gautero.fr/supp?jeton=71a4a17a658b90a7f847585721b5a217&id="+user[0]);
+                        }
+                    }).start();/*
                     Intent intent = new Intent(getBaseContext(), modifActivity.class);
                     intent.putExtra("param", var );
-                    startActivity(intent);
+                    startActivity(intent);*/
                 }
             });
-
 
         }
     }

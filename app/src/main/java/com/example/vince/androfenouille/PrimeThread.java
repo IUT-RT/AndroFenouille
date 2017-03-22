@@ -23,8 +23,8 @@ public class PrimeThread extends Thread {
         this.string="x";
     }
 
-    public void run() {
-        this.string = DownloadJson("http://infort.gautero.fr");
+    public void run(String url) {
+        this.string = DownloadJson(url);
     }
 
     public String DownloadJson(String uRl){
