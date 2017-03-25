@@ -1,8 +1,8 @@
 package com.example.vince.androfenouille;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
@@ -23,20 +23,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Appelé pas le button
-    public void newActivity(View v) {
+    public void newActivity(View v) throws InterruptedException {
         //Test si EditText non null
         if (log.getText().toString().equals("admin") && pass.getText().toString().equals("secret")) {
-          new Thread(new Runnable() {
 
+            //Démarre un nouveau thread
+          Thread t = new Thread(new Runnable() {
                 public void run() {
-                    json =fille.DownloadJson("http://infort.gautero.fr/connect.php?login=" + log.getText().toString() + "&mdp=" + pass.getText().toString());
+                   json = fille.DownloadJson("http://infort.gautero.fr/connect.php?login=" + log.getText().toString() + "&mdp=" + pass.getText().toString());
                 }
-            }).start();
-            Intent intent = new Intent(this, ListActivity.class);
+            });
+            //Execute le run()
+            t.start();
+            //On attend la fin du thread
+            t.join();
+
             //On supprime ce qui est ecrit dans les EditTexts
             log.setText("");
             pass.setText("");
             //Démarrage de la nouvelle activité
+            Intent intent = new Intent(this, ListActivity.class);
             startActivity(intent);
         }
     }

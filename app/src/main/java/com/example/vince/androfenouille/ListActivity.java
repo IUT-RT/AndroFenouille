@@ -1,25 +1,14 @@
 package com.example.vince.androfenouille;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
@@ -36,18 +25,28 @@ public class ListActivity extends AppCompatActivity {
 
         myList = (ListView) findViewById(R.id.listUserView);
         myArray = new ArrayList<String>();
+        try {
+            rechercheList();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void rechercheList(View v) {
-        new Thread(new Runnable() {
+    public void rechercheList() throws InterruptedException {
+        Toast.makeText(getBaseContext(),"List Actualise.",Toast.LENGTH_LONG).show();
 
+
+        Thread t =new Thread(new Runnable() {
             public void run() {
                json = fille.DownloadJson("http://infort.gautero.fr/listEtu.php");
             }
-        }).start();
+        });
+        t.start();
+        t.join();
+
+        //Test si la variable est null
         if ( json != null) {
             User.addUser(json);
-            myArray.add("first test");
             for (int cpt = 0; cpt < User.userList.size(); cpt++) {
                 myArray.add(User.userList.get(cpt).toString());
             }
@@ -61,16 +60,27 @@ public class ListActivity extends AppCompatActivity {
 
                 @Override
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                    Object o = myList.getItemAtPosition(position);
+                   Object o = myList.getItemAtPosition(position);
                     String var = o.toString();
                     user = var.split("-");
-                    new Thread(new Runnable() {
-                        @Override
+
+
+                    Thread t =new Thread(new Runnable() {
                         public void run() {
-                            fille.DownloadJson("http://infort.gautero.fr/supp?jeton=71a4a17a658b90a7f847585721b5a217&id="+user[0]);
+                            json = fille.DownloadJson("http://infort.gautero.fr/supp.php?jeton=71a4a17a658b90a7f847585721b5a217&id="+user[0]);
                         }
-                    }).start();/*
-                    Intent intent = new Intent(getBaseContext(), modifActivity.class);
+                    });
+                    t.start();
+                    try {
+                        t.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    //Supprime item à la position donné
+                    myArray.remove(position);
+                    //On dit à l'adapteur que l'on a modifier
+                    myAdapter.notifyDataSetChanged();
+                    /*Intent intent = new Intent(getBaseContext(), modifActivity.class);
                     intent.putExtra("param", var );
                     startActivity(intent);*/
                 }
