@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         pass = (EditText) findViewById(R.id.passEdit);
     }
 
-    //Appelé pas le button
+    //Appelé par le button
     public void newActivity(View v) throws InterruptedException {
         //Test si EditText non null
         if (log.getText().toString().equals("admin") && pass.getText().toString().equals("secret")) {

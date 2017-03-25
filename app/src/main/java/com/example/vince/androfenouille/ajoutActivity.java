@@ -37,8 +37,14 @@ public class ajoutActivity extends AppCompatActivity {
             t.start();
             //On attend que l'execution dans le nouveau soit fini
             t.join();
+
+            nom.setText("");
+            prenom.setText("");
+            formation.setText("");
+            annee.setText("");
+            /*
             Intent intent = new Intent(this, ListActivity.class);
-            startActivity(intent);
+            startActivity(intent);*/
 
 
         }else {

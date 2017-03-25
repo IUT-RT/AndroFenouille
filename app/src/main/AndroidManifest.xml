@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ajoutActivity" />
-        <activity android:name=".modifActivity"></activity>
+        <activity android:name=".ListActivity" />
     </application>
 
 </manifest>

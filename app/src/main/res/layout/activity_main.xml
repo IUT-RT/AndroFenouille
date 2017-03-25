@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -14,23 +15,26 @@
         android:id="@+id/titleText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Ultimate login for AndroFenouile"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:visibility="visible"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Ultimate login"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textStyle="bold"
+        android:visibility="visible" />
 
     <TextView
         android:id="@+id/loginText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="89dp"
+        android:layout_marginTop="60dp"
         android:text="Login :"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/passText"
@@ -67,17 +71,16 @@
         android:ems="10"
         android:inputType="text" />
 
-    <Button
+    <ImageButton
         android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/passText"
-        android:layout_marginTop="86dp"
-        android:text="Login"
-        android:onClick="newActivity"/>
+        android:layout_alignEnd="@+id/passEdit"
+        android:layout_alignRight="@+id/passEdit"
+        android:layout_below="@+id/passEdit"
+        android:layout_marginTop="22dp"
+        android:background="@color/colorAccent"
+        android:onClick="newActivity"
+        app:srcCompat="@android:drawable/ic_menu_send" />
 
 </RelativeLayout>

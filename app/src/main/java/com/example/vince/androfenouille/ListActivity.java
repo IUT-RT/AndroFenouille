@@ -21,7 +21,7 @@ public class ListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_list);
 
         myList = (ListView) findViewById(R.id.listUserView);
         myArray = new ArrayList<String>();
@@ -31,6 +31,38 @@ public class ListActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+   @Override
+    protected void onResume(){
+        super.onResume();
+        for(int i=0 ; i<User.userList.size()-1 ; i++){
+            User.userList.remove(i);
+        }
+        User.userList.clear();
+        myArray.clear();
+        myAdapter.notifyDataSetChanged();
+        try {
+            rechercheList();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onActualise(View v){
+        for(int i=0 ; i<User.userList.size()-1 ; i++){
+            User.userList.remove(i);
+        }
+        User.userList.clear();
+        myArray.clear();
+        myAdapter.notifyDataSetChanged();
+        try {
+            rechercheList();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     public void rechercheList() throws InterruptedException {
         Toast.makeText(getBaseContext(),"List Actualise.",Toast.LENGTH_LONG).show();
@@ -52,8 +84,6 @@ public class ListActivity extends AppCompatActivity {
             }
             myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myArray);
             myList.setAdapter(myAdapter);
-
-
 
             myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 String[] user;
