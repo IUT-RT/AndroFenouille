@@ -30,7 +30,7 @@ public class ajoutActivity extends AppCompatActivity {
             //Nouveau Thread
             Thread t = new Thread(new Runnable() {
                 public void run() {
-                    fille.DownloadJson("http://infort.gautero.fr/add.php?jeton=71a4a17a658b90a7f847585721b5a217&nom=" + nom.getText().toString() + "&prenom=" + prenom.getText().toString() + "&formation=" + formation.getText().toString() + "&annee=" + annee.getText().toString());
+                    fille.DownloadJson("http://infort.gautero.fr/add.php?jeton="+getIntent().getStringExtra("jeton")+"&nom=" + nom.getText().toString() + "&prenom=" + prenom.getText().toString() + "&formation=" + formation.getText().toString() + "&annee=" + annee.getText().toString());
                 }
             });
             //On start le thread

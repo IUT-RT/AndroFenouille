@@ -27,6 +27,7 @@ public class ListActivity extends AppCompatActivity {
 
         myList = (ListView) findViewById(R.id.listUserView);
         myArray = new ArrayList<String>();
+
         try {
             //Cree la liste et l'affiche
             rechercheList();
@@ -62,10 +63,13 @@ public class ListActivity extends AppCompatActivity {
 
     /**************
     *    ajoutUser
+     *
+     *    Démarre une nouvelle activitée
      ***************/
 
     public void ajoutUser(View v){
         Intent intent = new Intent(this, ajoutActivity.class);
+        intent.putExtra("jeton", getIntent().getStringExtra("jeton"));
         startActivity(intent);
     }
 
@@ -76,6 +80,9 @@ public class ListActivity extends AppCompatActivity {
 
     /**************
      *  onActualise
+     *
+     *  On supprime tous les items des listes userList et myArray
+     *  On informe l'Adapter que l'on à modifié la liste et on fait appel à recherche liste pour actualisé la liste
      ***************/
 
     public void onActualise(View v){
@@ -124,13 +131,14 @@ public class ListActivity extends AppCompatActivity {
             //Crée la Liste
             myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myArray);
             myList.setAdapter(myAdapter);
+
             final AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
             //Ajoute des méthode quand on click sur un item de la liste
             myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                 String[] user;
 
-                //Quand on click sur un item(utilisateur) on le suprime de la liste et de la liste json sur internet
+                //Quand on click sur un item(utilisateur) On affiche une boite de dialoque
                 @Override
                 public void onItemClick(AdapterView<?> parent, View v, final int position, long id) {
 
@@ -158,7 +166,7 @@ public class ListActivity extends AppCompatActivity {
                             //Crée un Thread qui permet de supprimer l'utilisateur
                             Thread t =new Thread(new Runnable() {
                                 public void run() {
-                                    json = fille.DownloadJson("http://infort.gautero.fr/supp.php?jeton=71a4a17a658b90a7f847585721b5a217&id="+user[0]);
+                                    json = fille.DownloadJson("http://infort.gautero.fr/supp.php?jeton="+getIntent().getStringExtra("jeton")+"&id="+user[0]);
                                 }
                             });
                             t.start();

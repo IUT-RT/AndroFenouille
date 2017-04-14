@@ -6,6 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 public class MainActivity extends AppCompatActivity {
     private EditText log;
@@ -23,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Appelé par le button
-    public void newActivity(View v) throws InterruptedException {
+    public void newActivity(View v) throws InterruptedException, JSONException {
         //Test si EditText non null
         if (log.getText().toString().equals("admin") && pass.getText().toString().equals("secret")) {
 
@@ -41,8 +45,14 @@ public class MainActivity extends AppCompatActivity {
             //On supprime ce qui est ecrit dans les EditTexts
             log.setText("");
             pass.setText("");
+
+            //On récupère le jeton
+            JSONArray jsonArray = new JSONArray(json);
+            JSONObject j = jsonArray.getJSONObject(0);
+
             //Démarrage de la nouvelle activité
             Intent intent = new Intent(this, ListActivity.class);
+            intent.putExtra("jeton", j.getString("jeton"));
             startActivity(intent);
         }
     }
